@@ -32,7 +32,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: @book, do |f| %>
+<%= form_with model: @book do |f| %>
   <div>Title</div>
   <%= f.text_field :title %>
 
