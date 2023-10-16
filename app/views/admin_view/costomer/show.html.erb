@@ -1,5 +1,5 @@
 <div class="container px-5 px-sm-0">
-  <h3><%= @customer.family_name + @customer.first_name %>さんの会員詳細</h3>
+  <h3><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h3>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <table class="table table-borderless">
@@ -10,11 +10,11 @@
           </tr>
           <tr>
             <th>氏名</th>
-            <td><%= @customer.family_name + "  " +@customer.first_name %></td>
+            <td><%= @customer.last_name + "  " +@customer.first_name %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td><%= @customer.family_name_kana + "  " +@customer.first_name_kana %></td>
+            <td><%= @customer.last_name_kana + "  " +@customer.first_name_kana %></td>
           </tr>
           <tr>
             <th>郵便番号</th>

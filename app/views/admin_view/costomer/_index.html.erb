@@ -18,7 +18,7 @@
         <% end %>
       </td>
       <td><%= customer.email %></td>
-      <% if @book.present? == true %>
+      <% if customer.is_active == true %>
         <td><strong style="color: green;">有効</strong></td>
       <% else %>
         <td><strong style="color: gray;">退会</strong></td>

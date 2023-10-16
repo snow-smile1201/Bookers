@@ -1,5 +1,5 @@
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-light">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -16,9 +16,9 @@
          <%= order.created_at %>
         <% end %>
       </td>
-      <td><%= order.customer.family_name + oder.customer.family_name %></td>
+      <td><%= order.customer.last_name + oder.customer.first_name %></td>
       <!--注文個数の表示を調べる-->
-      <td><%= order.total_amount %></td>
+      <td><%= order.order_details.amount.count %></td>
       <td><%= order.status %></td>
     </tr>
     <% end %>

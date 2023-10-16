@@ -1,5 +1,5 @@
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-light">
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
@@ -12,13 +12,17 @@
     <% items.each do |item| %>
     <tr>
       <td><%= item.id %></td>
-      <td><%=　link_to item.name, edit_admin_item_path(item) %></td>
+      <td>
+        <%= link_to edit_admin_item_path(item) do %>
+          <%= item.name %>
+        <% end %>
+      </td>
       <td><%= item.price %></td>
       <td><%= item.genre %></td>
-      <% if item.is_on_sale == 'true' %>
-        <td>販売中</td>
+      <% if item.is_sale == true %>
+        <td><strong style="color: green;">販売中</strong></td>
       <% else %>
-        <td>販売停止中</td>
+        <td><strong style="color: gray;">販売停止中</strong></td>
       <% end %>
     </tr>
     <% end %>
