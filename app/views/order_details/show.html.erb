@@ -1,52 +1,33 @@
 <div class="container px-5 px-sm-0">
   <h3>注文履歴詳細</h3>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
+    <div class="col-md-10 col-lg-8 px-5 px-sm-0 my-5">
+      <table class="table table-sm table-borderless">
         <tbody>
           <tr>
-            <th>会員ID</th>
-            <td><%= @customer.id %></td>
+            <th>購入者</th>
+            <td><%= @book.user.name %></td>
           </tr>
           <tr>
-            <th>氏名</th>
-            <td><%= @customer.last_name + "  " +@customer.first_name %></td>
+            <th>注文日</th>
+            <td><%= @book.created_at %></td>
           </tr>
           <tr>
-            <th>フリガナ</th>
-            <td><%= @customer.last_name_kana + "  " +@customer.first_name_kana %></td>
+            <th>配送先</th>
+            <td><%= @book.title + "  " +@book.title %></td>
           </tr>
           <tr>
-            <th>郵便番号</th>
-            <td><%= @customer.postal_code %></td>
+            <th>支払方法</th>
+            <td><%= @book.user.id %></td>
           </tr>
           <tr>
-            <th>住所</th>
-            <td><%= @customer.address %></td>
-          </tr>
-          <tr>
-            <th>電話番号</th>
-            <td><%= @customer.tel_number %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
-          </tr>
-          <tr>
-            <th>会員ステータス</th>
-            <% if @customer.is_active == true %>
-              <td><strong style="color: green;">有効</strong></td>
-            <% else %>
-              <td><strong style="color: gray;">退会</strong></td>
+            <th>注文ステータス</th>
+            <%= form_with model: @book do |f| %>
+              <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--",class: "w-25" %><%= "　　" %><%= f.submit '更新',class:"btn btn-success" %></td>
             <% end %>
           </tr>
           <tr>
             <th></th>
-            <td>
-              <%= link_to '編集する', edit_path(@customer), class:"btn btn-success" %>
-
-              <%= link_to '注文履歴一覧を見る', orders_path, class:"btn btn-primary" %>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -57,28 +38,22 @@
 <table class="table table-hover">
   <thead class="thead-light">
     <tr>
-      <th>商品ID</th>
       <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
     </tr>
   </thead>
   <tbody>
-    <% items.each do |item| %>
+    <% @book.user.books.each do |item| %>
     <tr>
+      <td><%= item.title %></td>
       <td><%= item.id %></td>
-      <td>
-        <%= link_to edit_admin_item_path(item) do %>
-          <%= item.name %>
-        <% end %>
-      </td>
-      <td><%= item.price %></td>
-      <td><%= item.genre %></td>
-      <% if item.is_sale == true %>
-        <td><strong style="color: green;">販売中</strong></td>
-      <% else %>
-        <td><strong style="color: gray;">販売停止中</strong></td>
+      <td><%= item.id %></td>
+      <td><%= item.created_at %></td>
+      <%= form_with model: @book do |f| %>
+        <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--",class: "form-control" %><%= "　　" %><%= f.submit '更新',class:"btn btn-success" %></td>
       <% end %>
     </tr>
     <% end %>

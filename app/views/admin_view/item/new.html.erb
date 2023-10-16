@@ -14,31 +14,31 @@
               <td><%= f.text_field :name, :placeholder => "商品名", class: "form-control" %></td>
             </tr>
             <tr>
-              <th><%= f.label :introduction, :placeholder => "ここに説明文を記述します", "商品説明" %></th>
-              <td><%= f.text_area :introduction, class: "form-control", rows: 7 %></td>
+              <th><%= f.label :introduction, "商品説明" %></th>
+              <td><%= f.text_area :introduction, rows: 7, :placeholder => "ここに説明を入力してください", class: "form-control" %></td>
             </tr>
             <tr>
               <th><%= f.label :genre_id, "ジャンル" %></th>
-              <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--" %></td>
+              <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--",class: "form-control" %></td>
             </tr>
             <tr>
-              <!--「円」はみ出る問題-->
               <th><%= f.label :price, "税抜価格" %></th>
-              <td><%= f.text_field :price, :placeholder => "1000", class: "form-control" %>円</td>
+              <td colspan="2"><%= f.text_field :price, :placeholder => "1000", class: "form-control" %></td>
+              <td><span>円</span></td>
             </tr>
             <tr>
               <th><%= f.label :status, "販売ステータス" %></th>
               <td>
                 <%= f.radio_button :status, true %>
                 <strong><%= f.label :status_true, "販売中"%></strong>
-                <%= "　　"%>
+                <%= "　 　"%>
                 <%= f.radio_button :status, false %>
                 <strong style="color: gray;"><%= f.label :status_false, "販売停止中"%></strong>
               </td>
             </tr>
             <tr>
               <th></th>
-              <td><%= f.submit '変更を保存',class:"btn btn-success" %></td>
+              <td><%= f.submit '新規登録',class:"btn btn-success" %></td>
             </tr>
           </tbody>
         </table>
