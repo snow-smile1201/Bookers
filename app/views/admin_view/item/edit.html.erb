@@ -22,9 +22,9 @@
               <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--" %></td>
             </tr>
             <tr>
-              <!--「円」はみ出る問題-->
               <th><%= f.label :price, "税抜価格" %></th>
-              <td><%= f.text_field :price, :placeholder => "1000", class: "form-control" %>円</td>
+              <td colspan="2"><%= f.text_field :price, :placeholder => "1000", class: "form-control" %></td>
+              <td style="vertical-align: bottom;"><span>円</span></td>
             </tr>
             <tr>
               <th><%= f.label :status, "販売ステータス" %></th>
